@@ -2,6 +2,15 @@
 
 This demo React project showcases state management using Redux Toolkit (RTK) and integrates with jsonplaceholder.typicode.com for seamless API prototyping.
 
+## Live Demo
+
+The demo is live at [https://qred-project-frontend.netlify.app](https://qred-project-frontend.netlify.app/)
+
+- Email: tharaka@devx.com
+- Password: !QAZ1qaz
+
+The frontend is deployed on Netlify and the backend is deployed on Fly.io
+
 ## 🌟 Features
 
 - **Vite + React**: Enjoy instant hot module replacement and a snappy development experience.

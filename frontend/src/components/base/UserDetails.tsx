@@ -17,7 +17,14 @@ export const UserDetails = ({ user }: { user: User }) => (
         size={20}
       />
       <span className="font-semibold text-gray-700">Email:</span>
-      <span className="text-gray-800">{user.email}</span>
+      <span className="text-blue-600">
+        <a
+          href={`mailto:${user.email}`}
+          target="_blank"
+          rel="noopener noreferrer">
+          {user.email}
+        </a>
+      </span>
     </div>
     <div className="flex items-center gap-4">
       <Phone

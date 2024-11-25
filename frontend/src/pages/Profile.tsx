@@ -15,6 +15,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import QredLogo from "@/assets/qred.png";
 
 type ProfileFormType = {
   city: string;
@@ -81,118 +82,146 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader></CardHeader>
-        <CardContent>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="streetName">Street Name</Label>
-              <Input
-                id="streetName"
-                {...register("streetName", {
-                  required: "Street name is required",
-                })}
-                type="text"
-                className="bg-white border-gray-200"
-              />
-              {errors.streetName && (
-                <span className="text-red-500 text-sm">
-                  {errors.streetName.message}
-                </span>
-              )}
-            </div>
+      <div className="w-full max-w-md space-y-4">
+        <img
+          src={QredLogo}
+          className="h-20 w-20 mx-auto"
+          alt="Logo"
+        />
+        <span className="block text-2xl text-center">Edit your profile</span>
+        <Card className="w-full">
+          <CardHeader></CardHeader>
+          <CardContent>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-4">
+              <div className="space-y-2">
+                <Label
+                  htmlFor="streetName"
+                  className="block text-sm font-medium text-gray-700">
+                  Street Name
+                </Label>
+                <Input
+                  id="streetName"
+                  {...register("streetName", {
+                    required: "Street name is required",
+                  })}
+                  type="text"
+                  className="bg-white border-gray-200"
+                />
+                {errors.streetName && (
+                  <span className="text-red-500 text-sm">
+                    {errors.streetName.message}
+                  </span>
+                )}
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="postalCode">Postal Code</Label>
-              <Input
-                id="postalCode"
-                {...register("postalCode", {
-                  required: "Postal code is required",
-                  pattern: {
-                    value: /^[0-9]{5}$/,
-                    message: "Invalid postal code",
-                  },
-                })}
-                type="text"
-                className="bg-white border-gray-200"
-              />
-              {errors.postalCode && (
-                <span className="text-red-500 text-sm">
-                  {errors.postalCode.message}
-                </span>
-              )}
-            </div>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="postalCode"
+                  className="block text-sm font-medium text-gray-700">
+                  Postal Code
+                </Label>
+                <Input
+                  id="postalCode"
+                  {...register("postalCode", {
+                    required: "Postal code is required",
+                    pattern: {
+                      value: /^[0-9]{5}$/,
+                      message: "Invalid postal code",
+                    },
+                  })}
+                  type="text"
+                  className="bg-white border-gray-200"
+                />
+                {errors.postalCode && (
+                  <span className="text-red-500 text-sm">
+                    {errors.postalCode.message}
+                  </span>
+                )}
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="city">City</Label>
-              <Input
-                id="city"
-                {...register("city", { required: "City is required" })}
-                type="text"
-                className="bg-white border-gray-200"
-              />
-              {errors.city && (
-                <span className="text-red-500 text-sm">
-                  {errors.city.message}
-                </span>
-              )}
-            </div>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="city"
+                  className="block text-sm font-medium text-gray-700">
+                  City
+                </Label>
+                <Input
+                  id="city"
+                  {...register("city", { required: "City is required" })}
+                  type="text"
+                  className="bg-white border-gray-200"
+                />
+                {errors.city && (
+                  <span className="text-red-500 text-sm">
+                    {errors.city.message}
+                  </span>
+                )}
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: "Please enter a valid email address.",
-                  },
-                })}
-                type="email"
-                className="bg-white border-gray-200"
-              />
-              {errors.email && (
-                <span className="text-red-500 text-sm">
-                  {errors.email.message}
-                </span>
-              )}
-            </div>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Please enter a valid email address.",
+                    },
+                  })}
+                  type="email"
+                  className="bg-white border-gray-200"
+                />
+                {errors.email && (
+                  <span className="text-red-500 text-sm">
+                    {errors.email.message}
+                  </span>
+                )}
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="phoneNumber">Phone Number</Label>
-              <Input
-                id="phoneNumber"
-                {...register("phoneNumber", {
-                  required: "Phone number is required",
-                  pattern: {
-                    value: /^\d{10}$/,
-                    message: "Invalid phone number, must be 10 digits",
-                  },
-                })}
-                type="tel"
-                className="bg-white border-gray-200"
-              />
-              {errors.phoneNumber && (
-                <span className="text-red-500 text-sm">
-                  {errors.phoneNumber.message}
-                </span>
-              )}
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button
-            type="submit"
-            disabled={!data?.id || updateLoading}
-            className="w-full rounded-full bg-accent hover:bg-accent"
-            onClick={handleSubmit(onSubmit)}>
-            {updateLoading ? "Loading..." : "Save changes"}
-          </Button>
-        </CardFooter>
-      </Card>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="phoneNumber"
+                  className="block text-sm font-medium text-gray-700">
+                  Phone Number
+                </Label>
+                <Input
+                  id="phoneNumber"
+                  {...register("phoneNumber", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^\d{10}$/,
+                      message: "Invalid phone number, must be 10 digits",
+                    },
+                  })}
+                  type="tel"
+                  className="bg-white border-gray-200"
+                />
+                {errors.phoneNumber && (
+                  <span className="text-red-500 text-sm">
+                    {errors.phoneNumber.message}
+                  </span>
+                )}
+              </div>
+            </form>
+          </CardContent>
+          <CardFooter>
+            <Button
+              type="submit"
+              disabled={!data?.id || updateLoading}
+              className="w-full rounded-full bg-accent hover:bg-accent"
+              onClick={handleSubmit(onSubmit)}>
+              {updateLoading ? "Loading..." : "Save changes"}
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   );
 }

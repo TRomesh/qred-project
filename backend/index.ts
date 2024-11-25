@@ -41,6 +41,12 @@ app.get("/ping", (_: Request, res: Response) => {
   });
 });
 
+app.get("/test", (_: Request, res: Response) => {
+  res.status(200).send({
+    message: getWebsiteDomain(),
+  });
+});
+
 // In case of session related errors, this error handler
 // returns 401 to the client.
 app.use(errorHandler());
